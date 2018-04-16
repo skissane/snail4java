@@ -1,0 +1,5 @@
+rootProject.name = 'snailjava'
+
+include ':snailjava-common'
+include ':snailjava-compiler'
+include ':snailjava-vm'
