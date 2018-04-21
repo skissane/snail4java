@@ -8,4 +8,10 @@ public interface SnailComplexParent {
     SnailDocument document();
 
     SnailComplexParent parent();
+
+    void ensureMutable();
+
+    boolean mutable();
+
+    void seal();
 }

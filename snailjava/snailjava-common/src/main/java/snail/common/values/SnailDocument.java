@@ -9,6 +9,23 @@ import java.util.*;
 public final class SnailDocument implements SnailComplexParent, SnailValue {
     private SnailComplex root;
     private final Set<SnailHandle> docHandles = new HashSet<>();
+    private boolean mutable = true;
+
+    @Override
+    public boolean mutable() {
+        return mutable;
+    }
+
+    @Override
+    public void seal() {
+        mutable = false;
+    }
+
+    @Override
+    public void ensureMutable() {
+        if (!mutable)
+            throw new IllegalStateException("Attempt to modify immutable document");
+    }
 
     @Override
     public SnailValueType valueType() {

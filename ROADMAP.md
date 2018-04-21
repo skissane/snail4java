@@ -17,10 +17,10 @@ to native machine code (such as x64 assembly).
 
 Other directions to branch off into would include an FFI (see LibFFI,
 c2ffi), event-driven programming (LibUV), some kind of UI (maybe a GUI,
-SDL-based? or a Web UI?).
+SDL-based? or a Web UI? a text mode UI, like curses??).
 
 Ideally, I'd like Snail/Slug to be a completely self-hosting system, in
-which even the undrlying operating system is written in Snail/Slug, and
+which even the underlying operating system is written in Snail/Slug, and
 all the necessary development tools (editor, compiler, assembler, linker,
 version control, diff/patch/search tools, issue tracker, code coverage,
 profiling, debugging, etc) are too. However, I realise that is an extremely

@@ -1,10 +1,10 @@
 package snail.common.values;
 
-import snail.common.util.GeneralException;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.function.Supplier;
 
 /**
@@ -98,5 +98,20 @@ public abstract class SnailComplex implements SnailComplexParent, SnailHeapValue
 
     public int countHandles() {
         return ptrHandles.size();
+    }
+
+    @Override
+    public void ensureMutable() {
+        document().ensureMutable();
+    }
+
+    @Override
+    public boolean mutable() {
+        return document().mutable();
+    }
+
+    @Override
+    public void seal() {
+        document().seal();
     }
 }
