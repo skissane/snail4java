@@ -2,6 +2,5 @@ apply plugin: 'application'
 mainClassName = 'snail.compiler.SnailCompiler'
 
 dependencies {
-    compile project(":snailjava-common")
     compile project(":snailjava-vm")
 }

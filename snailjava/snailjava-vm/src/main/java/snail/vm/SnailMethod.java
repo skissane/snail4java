@@ -1,6 +1,6 @@
 package snail.vm;
 
-import snail.common.values.SnailList;
+import snail.vm.values.SnailList;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
