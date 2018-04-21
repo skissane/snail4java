@@ -1,5 +1,7 @@
 package snail.common.values;
 
+import snail.common.util.GeneralException;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
@@ -45,6 +47,8 @@ public abstract class SnailComplex implements SnailComplexParent, SnailHeapValue
     }
 
     public void parent(@Nonnull SnailComplex newParent) {
+        if (parent == newParent)
+            return;
         final SnailDocument oldParent = parent == null ? null : (SnailDocument) parent;
         this.parent = newParent;
         if (oldParent != null)
@@ -71,5 +75,28 @@ public abstract class SnailComplex implements SnailComplexParent, SnailHeapValue
     public static void deleteIfComplex(@Nullable SnailHeapValue value) {
         if (value instanceof SnailComplex)
             ((SnailComplex) value).delete();
+    }
+
+    @Override
+    public final int compareSameType(@Nonnull SnailValue b) {
+        if (valueType() != b.valueType())
+            throw new IllegalArgumentException();
+        return doCompare((SnailComplex) b);
+    }
+
+    protected abstract int doCompare(@Nonnull SnailComplex b);
+
+    @Override
+    public final boolean equals(Object obj) {
+        return obj instanceof SnailValue && SnailValue.equals(this, (SnailValue) obj);
+    }
+
+    @Override
+    public final String toString() {
+        return asPrintable();
+    }
+
+    public int countHandles() {
+        return ptrHandles.size();
     }
 }

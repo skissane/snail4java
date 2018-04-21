@@ -82,18 +82,47 @@ public final class SnailObject extends SnailComplex {
         }
     }
 
-    private void remove(@Nonnull SnailRef attr) {
+    void remove(@Nonnull SnailRef attr) {
         final SnailHeapValue existing = attrs.remove(attr);
         SnailComplex.deleteIfComplex(existing);
     }
 
     @Override
     protected void doDelete() {
+        while (!attrRefs.isEmpty())
+            remove(attrRefs.iterator().next());
+    }
+
+    @Override
+    protected int doCompare(@Nonnull SnailComplex b) {
+        final SnailObject oa = this;
+        final SnailObject ob = (SnailObject) b;
+        final Iterator<SnailRef> ia = oa.attrs().iterator();
+        final Iterator<SnailRef> ib = ob.attrs().iterator();
         while (true) {
-            final SnailRef attr = attrRefs.pollFirst();
-            if (attr == null)
-                break;
-            remove(attr);
+            final boolean ha = ia.hasNext();
+            final boolean hb = ib.hasNext();
+            if (!ha && !hb)
+                return 0;
+            if (!ha)
+                return -1;
+            if (!hb)
+                return 1;
+            final SnailRef aa = ia.next();
+            final SnailRef ab = ib.next();
+            final int ra = SnailValue.compare(aa, ab);
+            if (ra != 0)
+                return ra;
+            final SnailHeapValue ea = get(aa);
+            final SnailHeapValue eb = get(ab);
+            final int r = SnailValue.compare(ea, eb);
+            if (r != 0)
+                return r;
         }
+    }
+
+    @Override
+    public int doHashCode() {
+        return attrs.hashCode();
     }
 }

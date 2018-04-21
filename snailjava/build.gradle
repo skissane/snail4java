@@ -1,12 +1,19 @@
-subprojects {
-    apply plugin: 'java'
+allprojects {
     repositories {
         jcenter()
     }
+}
 
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
     dependencies {
         compile 'org.slf4j:slf4j-api:1.7.25'
         compile 'com.google.code.findbugs:jsr305:3.0.2'
         testCompile 'junit:junit:4.12'
+    }
+
+    jacoco {
+        toolVersion = "0.8.1"
     }
 }

@@ -26,4 +26,14 @@ public final class SnailString extends SnailSimple {
     public String value() {
         return value;
     }
+
+    @Override
+    protected int doCompare(@Nonnull SnailSimple b) {
+        return value.compareTo(((SnailString) b).value);
+    }
+
+    @Override
+    public int doHashCode() {
+        return value.hashCode();
+    }
 }

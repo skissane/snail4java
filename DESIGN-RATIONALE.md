@@ -1,6 +1,4 @@
-# Snail programming language
-
-Snail is a programming language.
+# Snail Design Rationale
 
 ## Some design principles
 

@@ -46,4 +46,14 @@ public final class SnailRef extends SnailSimple {
     public String asPrintable() {
         return parent != null ? parent.asPrintable() + "." + name : name;
     }
+
+    @Override
+    protected int doCompare(@Nonnull SnailSimple b) {
+        return asPrintable().compareTo(((SnailRef) b).asPrintable());
+    }
+
+    @Override
+    public int doHashCode() {
+        return Objects.hash(parent, name);
+    }
 }

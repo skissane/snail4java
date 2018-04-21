@@ -57,4 +57,30 @@ public final class SnailDocument implements SnailComplexParent, SnailValue {
         docHandles.forEach(handle -> handle.transferDocument(this, newDocument));
         assert docHandles.isEmpty();
     }
+
+    @Override
+    public int compareSameType(@Nonnull SnailValue b) {
+        if (valueType() != b.valueType())
+            throw new IllegalArgumentException();
+        return SnailValue.compare(root, ((SnailDocument) b).root);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof SnailValue && SnailValue.equals(this, (SnailValue) obj);
+    }
+
+    @Override
+    public int doHashCode() {
+        return root == null ? 0 : root.doHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return asPrintable();
+    }
+
+    public int countHandles() {
+        return docHandles.size();
+    }
 }

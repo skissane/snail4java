@@ -44,6 +44,7 @@ public final class SnailWriter {
             write(((SnailHandle) value).deref());
         } else {
             final SnailValueType valueType = value.valueType();
+            writeTag(valueType);
             switch (valueType) {
                 case T_ref:
                     writeRef((SnailRef) value);

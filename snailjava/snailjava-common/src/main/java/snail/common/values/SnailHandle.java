@@ -1,6 +1,7 @@
 package snail.common.values;
 
 import javax.annotation.Nonnull;
+import java.util.Objects;
 
 /**
  * Handles live in VM registers. They are pointers to complex values on heap.
@@ -52,4 +53,27 @@ public final class SnailHandle implements SnailRegisterValue {
         doc = to;
         doc.addHandle(this);
     }
+
+    @Override
+    public int compareSameType(@Nonnull SnailValue b) {
+        if (valueType() != b.valueType())
+            throw new IllegalArgumentException();
+        return SnailValue.compare(ptr, ((SnailHandle) b).ptr);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof SnailValue && SnailValue.equals(this, (SnailValue) obj);
+    }
+
+    @Override
+    public int doHashCode() {
+        return Objects.hashCode(ptr);
+    }
+
+    @Override
+    public String toString() {
+        return asPrintable();
+    }
+
 }

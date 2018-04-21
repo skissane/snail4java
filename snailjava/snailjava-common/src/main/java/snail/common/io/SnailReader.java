@@ -32,7 +32,18 @@ public class SnailReader {
     public static SnailHeapValue fromBytes(@Nonnull byte[] data) {
         final ByteArrayInputStream in = new ByteArrayInputStream(data);
         final SnailReader reader = new SnailReader(in);
-        return reader.read(null);
+        final SnailHeapValue read = reader.read(null);
+        reader.expectEof();
+        return read;
+    }
+
+    private void expectEof() {
+        try {
+            if (in.read() != -1)
+                throw new ExpectedEOFException();
+        } catch (IOException e) {
+            throw handle(e);
+        }
     }
 
     private SnailHeapValue read(@Nullable SnailComplex context) {

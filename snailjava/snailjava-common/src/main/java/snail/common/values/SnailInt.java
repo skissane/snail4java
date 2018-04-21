@@ -1,5 +1,7 @@
 package snail.common.values;
 
+import javax.annotation.Nonnull;
+
 /**
  * 64-bit signed integer.
  */
@@ -22,5 +24,15 @@ public final class SnailInt extends SnailSimple {
 
     public long value() {
         return value;
+    }
+
+    @Override
+    protected int doCompare(@Nonnull SnailSimple b) {
+        return Long.compare(value, ((SnailInt)b).value);
+    }
+
+    @Override
+    public int doHashCode() {
+        return Long.hashCode(value);
     }
 }
