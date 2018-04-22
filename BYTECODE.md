@@ -66,8 +66,8 @@
 
 ```
 # Register counts: X=0, Z=0, W=3; total=3
-0	CONSTANT	c0, y0		# c0=1; y0=w2
-3	CONSTANT	c0, y1  # c0=1; y1=w1
-6	CALL		c1, 2, w0	# c1=(add method)
-10	RET		w0
+0  CONSTANT c0, y0     # c0=1; y0=w2
+3  CONSTANT c0, y1     # c0=1; y1=w1
+6  CALL     c1, 2, w0  # c1=(add method)
+10 RET      w0
 ```
