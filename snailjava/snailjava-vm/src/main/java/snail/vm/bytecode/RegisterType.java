@@ -14,10 +14,7 @@ public enum RegisterType {
     Z,
     /**
      * W registers are work registers. They store temporary values.
+     * Y registers are just aliases for W registers.
      */
-    W,
-    /**
-     * Y registers store outbound arguments to methods we call.
-     */
-    Y
+    W
 }
