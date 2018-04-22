@@ -35,4 +35,8 @@ public final class SnailInt extends SnailSimple {
     public int doHashCode() {
         return Long.hashCode(value);
     }
+
+    public int intValue() {
+        return Math.toIntExact(value);
+    }
 }

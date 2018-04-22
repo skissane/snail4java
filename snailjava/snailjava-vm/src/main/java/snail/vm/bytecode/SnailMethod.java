@@ -30,6 +30,18 @@ public class SnailMethod {
         return o;
     }
 
+    public SnailMethod fromObject(@Nonnull SnailObject o) {
+        if (!CLASS_vmMethod.equals(o.ofClass()))
+            throw new IllegalArgumentException("Wrong class: " + o);
+        final SnailList arguments = o.get(ATTR_arguments, SnailList.class);
+        final SnailList variables = o.get(ATTR_variables, SnailList.class);
+        final SnailList constantPool = o.get(ATTR_constantPool, SnailList.class);
+        final int wCount = o.get(ATTR_wCount, SnailInt.class).intValue();
+        final int yCount = o.get(ATTR_yCount, SnailInt.class).intValue();
+        final byte[] instructions = o.get(ATTR_instructions, SnailBinary.class).value();
+        return new SnailMethod(arguments, variables, constantPool, wCount, yCount, instructions);
+    }
+
     private final SnailList arguments;
     private final SnailList variables;
 

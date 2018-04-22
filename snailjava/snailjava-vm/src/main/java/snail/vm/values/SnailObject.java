@@ -50,6 +50,10 @@ public final class SnailObject extends SnailComplex {
         return attrs.get(attr);
     }
 
+    public <T extends SnailHeapValue> T get(@Nonnull SnailRef attr, @Nonnull Class<T> cls) {
+        return cls.cast(get(attr));
+    }
+
     public static SnailObject make(@Nonnull SnailRef ofClass, @Nullable SnailComplex parent) {
         if (parent == null) {
             final SnailDocument doc = new SnailDocument();
