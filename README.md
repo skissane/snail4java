@@ -2,6 +2,17 @@
 
 Snail is a programming language.
 
+## Why is it called "Snail"?
+
+I have been thinking about a language design like this for a long time. But I was worried about performance. Then I went and
+implemented a language similar to Tcl version 7, and jokingly I called it "Snail", since it was going to be so slow. And well,
+it was slow, yet still I found it usable. And this design, even if slow, should be even faster than that, so it is reusing the
+name "Snail". Another way of interpreting the name, is that performance is not the number one priority for this language, it
+is somewhat down the list.
+
+I later plan to design a lower-level implementation language to be called "Slug". The relationship between Snail and Slug will
+be similar to that between Python and RPython in PyPy.
+
 ## Some design principles
 
 * Try to avoid excessive complexity. I know that is hard in general, and
