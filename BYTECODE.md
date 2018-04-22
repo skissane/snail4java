@@ -48,7 +48,7 @@
 |CALL     |c,n,r  |Call a method                              |
 |CONSTANT |c,r    |Move constant to register                  |
 |JUMP     |o      |Jump always to offset                      |
-|JUMPIF   |c,o    |Jump if register true                      |
+|JUMPIF   |r,o    |Jump if register true                      |
 |LISTADD  |r,r    |Adds register to list in register          |
 |LISTDEL  |r,r    |Removes nth element of list                |
 |LISTGET  |r,r    |Gets nth element of list                   |
