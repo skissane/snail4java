@@ -29,6 +29,23 @@ public class Text {
         return text.substring(start, start + length);
     }
 
+    public int length() {
+        return text.length();
+    }
+
+    public char charAt(int index) {
+        return text.charAt(index);
+    }
+
+    public String substring(int index) {
+        return text.substring(index);
+    }
+
+    public SyntaxErrorException syntaxError(int pos, @Nonnull String msg) {
+        final Position at = at(pos);
+        return new SyntaxErrorException(at,msg);
+    }
+
     public final class Position {
         private final int off, line, column;
 
