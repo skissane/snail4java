@@ -1,8 +1,9 @@
-package snail.vm;
+package snail.vm.bytecode;
 
-import snail.vm.values.SnailList;
+import snail.vm.values.*;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -10,6 +11,25 @@ import java.util.Objects;
  * Represents a single Snail method.
  */
 public class SnailMethod {
+    private static final SnailRef CLASS_vmMethod = SnailRef.make("snail.vmMethod");
+    private static final SnailRef ATTR_arguments = CLASS_vmMethod.child("arguments");
+    private static final SnailRef ATTR_variables = CLASS_vmMethod.child("variables");
+    private static final SnailRef ATTR_constantPool = CLASS_vmMethod.child("constantPool");
+    private static final SnailRef ATTR_wCount = CLASS_vmMethod.child("wCount");
+    private static final SnailRef ATTR_yCount = CLASS_vmMethod.child("yCount");
+    private static final SnailRef ATTR_instructions = CLASS_vmMethod.child("instructions");
+
+    public SnailObject asObject(@Nullable SnailComplex parent) {
+        final SnailObject o = SnailObject.make(CLASS_vmMethod, parent);
+        o.set(ATTR_arguments, arguments);
+        o.set(ATTR_variables, variables);
+        o.set(ATTR_wCount, new SnailInt(wCount));
+        o.set(ATTR_yCount, new SnailInt(yCount));
+        o.set(ATTR_constantPool, constantPool);
+        o.set(ATTR_instructions, new SnailBinary(instructions));
+        return o;
+    }
+
     private final SnailList arguments;
     private final SnailList variables;
 

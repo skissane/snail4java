@@ -1,4 +1,4 @@
-package snail.vm;
+package snail.vm.bytecode;
 
 /**
  * Byte code opcodes.

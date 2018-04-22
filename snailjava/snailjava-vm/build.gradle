@@ -1,5 +1,5 @@
 apply plugin: 'application'
-mainClassName = 'snail.vm.SnailCompiler'
+mainClassName = 'snail.vm.boot.SnailCompiler'
 
 dependencies {
 }

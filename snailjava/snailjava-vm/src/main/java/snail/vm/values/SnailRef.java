@@ -30,6 +30,10 @@ public final class SnailRef extends SnailSimple {
         return cur;
     }
 
+    public SnailRef child(@Nonnull String child) {
+        return make(asPrintable() + "." + child);
+    }
+
     @Override
     public SnailValueType valueType() {
         return SnailValueType.T_ref;

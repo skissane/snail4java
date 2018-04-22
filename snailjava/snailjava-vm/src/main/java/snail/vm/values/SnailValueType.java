@@ -7,6 +7,7 @@ public enum SnailValueType {
     T_ref,
     T_int,
     T_string,
+    T_binary,
     T_list,
     T_object,
     T_resource;
