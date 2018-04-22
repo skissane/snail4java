@@ -1,6 +1,6 @@
 # Snail Bytecode Design
 
-* Register machine, there are four sets of registers:
+* Register machine, there are three sets of registers:
   * **W** registers: these are work registers, used for temporary
     values.
     * **Y** registers: These are simply another way of referring to
