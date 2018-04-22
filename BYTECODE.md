@@ -22,7 +22,6 @@
     (Y registers), since the method call will type-check. We could do it
     for W registers not used as Y registers, but the complexity is
     probably not worth it.
-* X registers are read-only. Constants are read-only too.
 * On return from a CALL, the Y registers used to pass the method arguments
   are set to null.
 
