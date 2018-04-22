@@ -47,10 +47,10 @@
 
 ## Things not to implement (at least not yet)
 
-* Macros. Good idea but avoid doing them until I really feel the need.
+* ***Macros***. Good idea but avoid doing them until I really feel the need.
   When I do feel the need, they should work on expression tree not
   bytecode level.
-* Lazy arguments. My idea is lazy resources are only valid when the
+* ***Lazy arguments***. My idea is lazy resources are only valid when the
   allocating frame is still on the stack; closing that frame
   automatically cancels all lazy values it allocated. The lazy
   resource still exists but is marked as cancelled and any attempt to
@@ -63,18 +63,31 @@
 	  higher scope, then the lazy is escaping. But this means a
 	  lazy can't be a "simple resource", it has to be a
 	  "complex one", because it knows which document(s) it belongs to.
-* Coroutines (tasks). Note these don't cause circular reference issues
+	* A related idea is a variable reference. This will enable
+	  variables to be passed by reference. Since the variable belongs
+	  to the scope, it must be cancelled at scope exit, or an error
+	  raised.
+* ***Coroutines*** (***tasks***). Note these don't cause circular reference issues
   because they are global (like symbol bindings). There are methods to
   get all tasks (task.getAll), to get a task by its ID (task.byId).
-* Anonymous functions. These aren't closures because they have no access
+* ***Anonymous functions***. These aren't closures because they have no access
   to the defining scope.
-* Closures. A cross between a lazy and an anonymous function. A lazy is
+* ***Closures***. A cross between a lazy and an anonymous function. A lazy is
   like a closure with no arguments. Just like a lazy, we cannot allow
   a closure to survive longer than its allocating scope due to our
   memory model. Since a lazy is just a zero-argument closure, we don't
   need lazy, we can just have closure, and lazy arguments is a form of
   auto-closure.
-* Variadic functions. Good idea, but extra complexity at first. This
+* ***Variadic functions***. Good idea, but extra complexity at first. This
   includes optional arguments, argument default values, rest arguments.
-* Keyword arguments. Another good idea, but again extra complexity.
-* Multiple return values. Sometimes useful but too much complexity.
+* ***Keyword arguments***. Another good idea, but again extra complexity.
+* ***Multiple return values***. Sometimes useful but too much complexity.
+	* Both multiple return values and rest arguments could be implemented
+	  by a new register-only data type, the "values" type. A values type
+	  is composed of zero or more values, either simple or handle. Values
+	  type cannot be nested; adding values to a values adds all its member
+	  values.
+* ***Structured names***. I have some ideas for names to have a more complex
+  structure than simply a hierarchy, such as having typed tags, etc. These
+  ideas may have some value, but implementing them now will just add
+  complexity.
