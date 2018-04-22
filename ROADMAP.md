@@ -23,5 +23,5 @@ Ideally, I'd like Snail/Slug to be a completely self-hosting system, in
 which even the underlying operating system is written in Snail/Slug, and
 all the necessary development tools (editor, compiler, assembler, linker,
 version control, diff/patch/search tools, issue tracker, code coverage,
-profiling, debugging, etc) are too. However, I realise that is an extremely
-ambitious goal, so odds are I am never going to achieve it.
+profiling, debugging, build tool, etc) are too. However, I realise that is
+an extremely ambitious goal, so odds are I am never going to achieve it.
