@@ -1,2 +1,3 @@
+language: generic
 jdk: oraclejdk9
 script: ./snailjava/test.sh
