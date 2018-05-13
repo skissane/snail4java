@@ -1,2 +1,2 @@
-jdk: oraclejava9
+jdk: oraclejdk9
 script: ./snailjava/test.sh
