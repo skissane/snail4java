@@ -1,4 +1,7 @@
-jdk:
-  - openjdk9
-
-script: "java -version && ./snailjava/test.sh"
+sudo: true
+script:
+  - sudo apt-get update
+  - sudo apt-get install openjdk-9-jdk
+  - jdk_switcher use openjdk9
+  - java -version
+  - ./snailjava/test.sh
