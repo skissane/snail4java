@@ -1,1 +1,1 @@
-script: ./snailjava/test.sh
+script: "java --version && ./snailjava/test.sh"
