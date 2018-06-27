@@ -1,5 +1,6 @@
 package snail.vm.bytecode;
 
+import snail.vm.util.GeneralException;
 import snail.vm.values.*;
 
 import javax.annotation.Nonnull;
@@ -30,7 +31,7 @@ public class SnailMethod {
 
     public static SnailMethod fromObject(@Nonnull SnailObject o) {
         if (!CLASS_vmMethod.equals(o.ofClass()))
-            throw new IllegalArgumentException("Wrong class: " + o);
+            throw new GeneralException("Wrong class: '%s'", o);
         final SnailList arguments = o.get(ATTR_arguments, SnailList.class);
         final SnailList variables = o.get(ATTR_variables, SnailList.class);
         final SnailList constantPool = o.get(ATTR_constantPool, SnailList.class);
