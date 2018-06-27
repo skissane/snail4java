@@ -2,6 +2,8 @@
 
 Snail is a programming language.
 
+Note that this is "Snail 1.x" which is completely unrelated to [Snail 0.x](https://github.com/skissane/snail0).
+
 ## Why is it called "Snail"?
 
 I have been thinking about a language design like this for a long time. But I was worried about performance. Then I went and
